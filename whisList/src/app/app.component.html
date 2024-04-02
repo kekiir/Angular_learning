@@ -1,4 +1,18 @@
 <div class="container">
+
+<form class="row mt-m gx-3 gy-2 aligne-items-center justify-content-center">
+  <div class="col-sn-6">
+    <label for="SpecificSiezeInputName" class="visually-idden">wishes</label>
+    <input type="text" name="new-wiwh-text" class="form-control" [(ngModel)]="newWishText">
+  </div>
+
+  <button
+  type="submit"
+  class="btn btn-primary"
+  (click)="$event.preventDefault(); addNewWish() ">
+  Add wish</button>
+</form>
+
   <div *ngIf="items.length == 0; else showItems">
     There are no wishes to display.
   </div>
@@ -15,7 +29,7 @@
               type="checkbox"
               [checked]="item.isCompleted"
               [attr.data-index]="ii"
-              (click)="toggleItem()"
+              (click)="toggleItem(item)"
             />
             {{ item.wishText }}
           </label>
